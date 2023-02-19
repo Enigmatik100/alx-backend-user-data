@@ -55,13 +55,15 @@ class BasicAuth(Auth):
             user_pwd: str) -> TypeVar('User'):
         """get current user's credentials """
         if type(user_email) == str and type(user_pwd) == str:
-            obj = {'email': user_email}
-            users = User.search(obj)
-            if users:
-                if users[0].is_valid_password(user_pwd):
-                    return users[0]
+            try:
+                users = User.search({'email': user_email})
+            except Exception:
                 return None
-            return None
+            if len(users) == 0:
+                return None
+
+            if users[0].is_valid_password(user_pwd):
+                return users[0]
         return None
 
     def current_user(self, request=None) -> TypeVar('User'):
