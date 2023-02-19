@@ -56,13 +56,14 @@ class BasicAuth(Auth):
         """get current user's credentials """
         if user_email is None or user_pwd is None:
             return None
-
-        obj = {'email': user_email}
-        if not User.all():
-            return None
-        user = User.search(obj)
-        if user:
-            if user[0].is_valid_password(user_pwd):
-                return user[0]
+        if type(user_email) == str and type(user_pwd) == str:
+            obj = {'email': user_email}
+            if not User.all():
+                return None
+            user = User.search(obj)
+            if user:
+                if user[0].is_valid_password(user_pwd):
+                    return user[0]
+                return None
             return None
         return None
