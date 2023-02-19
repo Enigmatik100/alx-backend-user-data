@@ -21,7 +21,9 @@ class BasicAuth(Auth):
         if len(auth_details) > 1:
             return auth_details[1]
 
-    def decode_base64_authorization_header(self, base64_authorization_header: str) -> str:
+    def decode_base64_authorization_header(self,
+                                           base64_authorization_header: str
+                                           ) -> str:
         """decode base64 authorization header"""
         if base64_authorization_header is None or \
                 type(base64_authorization_header) != str:
