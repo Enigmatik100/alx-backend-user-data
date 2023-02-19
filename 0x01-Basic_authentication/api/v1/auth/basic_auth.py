@@ -53,7 +53,7 @@ class BasicAuth(Auth):
             self,
             user_email: str,
             user_pwd: str) -> TypeVar('User'):
-
+        """get current user's credentials """
         if user_email is None or user_pwd is None:
             return None
 
