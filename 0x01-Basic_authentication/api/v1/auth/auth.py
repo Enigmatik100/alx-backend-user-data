@@ -2,9 +2,8 @@
 """
 Module to handle user's authentification
 """
-from typing import List, TypeVar
 import re
-from flask import request
+from typing import List, TypeVar
 
 
 class Auth:
