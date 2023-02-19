@@ -44,6 +44,7 @@ def forbidden(error) -> str:
 
 @app.before_request
 def before_request():
+    """intercept request"""
     excluded_paths = ['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']
     if auth:
         if auth.require_auth(request.path, excluded_paths):
